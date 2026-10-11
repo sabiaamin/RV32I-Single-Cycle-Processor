@@ -1,0 +1,17 @@
+
+# Testbench files - keep locally, don't upload to GitHub
+tb/*_tb.v
+
+# Simulation executables and output
+cpu_sim
+*.vvp
+*.vcd
+*.fst
+*.lxt
+*.lxt2
+
+# Editor and OS files
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db

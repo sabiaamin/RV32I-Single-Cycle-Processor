@@ -1,0 +1,76 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000001c70a81bb90 .scope module, "instruction_memory_tb" "instruction_memory_tb" 2 3;
+ .timescale -9 -12;
+v000001c70a816650_0 .var "address", 31 0;
+v000001c70a8166f0_0 .net "instruction", 31 0, L_000001c70a9b6a10;  1 drivers
+S_000001c70a81bd20 .scope module, "uut" "instruction_memory" 2 8, 3 1 0, S_000001c70a81bb90;
+ .timescale 0 0;
+    .port_info 0 /INPUT 32 "address";
+    .port_info 1 /OUTPUT 32 "instruction";
+L_000001c70a9b6a10 .functor BUFZ 32, L_000001c70a816790, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>, C4<00000000000000000000000000000000>;
+v000001c70a816e40_0 .net *"_ivl_0", 31 0, L_000001c70a816790;  1 drivers
+v000001c70a81b020_0 .net *"_ivl_3", 7 0, L_000001c70a816830;  1 drivers
+v000001c70a81b0c0_0 .net *"_ivl_4", 9 0, L_000001c70a8168d0;  1 drivers
+L_000001c70a9fe838 .functor BUFT 1, C4<00>, C4<0>, C4<0>, C4<0>;
+v000001c70a81b160_0 .net *"_ivl_7", 1 0, L_000001c70a9fe838;  1 drivers
+v000001c70a81b200_0 .net "address", 31 0, v000001c70a816650_0;  1 drivers
+v000001c70a81b2a0_0 .net "instruction", 31 0, L_000001c70a9b6a10;  alias, 1 drivers
+v000001c70a81b340 .array "memory", 255 0, 31 0;
+L_000001c70a816790 .array/port v000001c70a81b340, L_000001c70a8168d0;
+L_000001c70a816830 .part v000001c70a816650_0, 2, 8;
+L_000001c70a8168d0 .concat [ 8 2 0 0], L_000001c70a816830, L_000001c70a9fe838;
+    .scope S_000001c70a81bd20;
+T_0 ;
+    %pushi/vec4 19, 0, 32;
+    %ix/load 4, 0, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4a v000001c70a81b340, 4, 0;
+    %pushi/vec4 19, 0, 32;
+    %ix/load 4, 1, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4a v000001c70a81b340, 4, 0;
+    %pushi/vec4 19, 0, 32;
+    %ix/load 4, 2, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4a v000001c70a81b340, 4, 0;
+    %pushi/vec4 19, 0, 32;
+    %ix/load 4, 3, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4a v000001c70a81b340, 4, 0;
+    %end;
+    .thread T_0;
+    .scope S_000001c70a81bb90;
+T_1 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001c70a816650_0, 0, 32;
+    %delay 1000, 0;
+    %vpi_call 2 17 "$display", "Address = %d, Instruction = %h", v000001c70a816650_0, v000001c70a8166f0_0 {0 0 0};
+    %pushi/vec4 4, 0, 32;
+    %store/vec4 v000001c70a816650_0, 0, 32;
+    %delay 1000, 0;
+    %vpi_call 2 22 "$display", "Address = %d, Instruction = %h", v000001c70a816650_0, v000001c70a8166f0_0 {0 0 0};
+    %pushi/vec4 8, 0, 32;
+    %store/vec4 v000001c70a816650_0, 0, 32;
+    %delay 1000, 0;
+    %vpi_call 2 27 "$display", "Address = %d, Instruction = %h", v000001c70a816650_0, v000001c70a8166f0_0 {0 0 0};
+    %pushi/vec4 12, 0, 32;
+    %store/vec4 v000001c70a816650_0, 0, 32;
+    %delay 1000, 0;
+    %vpi_call 2 32 "$display", "Address = %d, Instruction = %h", v000001c70a816650_0, v000001c70a8166f0_0 {0 0 0};
+    %vpi_call 2 35 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb\04_instruction_memory_tb.v";
+    "src\04_instruction_memory.v";

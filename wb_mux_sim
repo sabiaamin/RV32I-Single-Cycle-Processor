@@ -1,0 +1,53 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_00000276b00c9a90 .scope module, "writeback_mux_tb" "writeback_mux_tb" 2 3;
+ .timescale -9 -12;
+v00000276aff55950_0 .var "MemToReg", 0 0;
+v00000276aff559f0_0 .var "aluResult", 31 0;
+v00000276aff55a90_0 .var "memoryData", 31 0;
+v00000276aff55b30_0 .net "writeData", 31 0, L_00000276aff53320;  1 drivers
+S_00000276b00c9c20 .scope module, "uut" "writeback_mux" 2 13, 3 1 0, S_00000276b00c9a90;
+ .timescale 0 0;
+    .port_info 0 /INPUT 32 "aluResult";
+    .port_info 1 /INPUT 32 "memoryData";
+    .port_info 2 /INPUT 1 "MemToReg";
+    .port_info 3 /OUTPUT 32 "writeData";
+L_00000276aff9b848 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_00000276b00c9db0 .functor XNOR 1, v00000276aff55950_0, L_00000276aff9b848, C4<0>, C4<0>;
+v00000276aff55770_0 .net "MemToReg", 0 0, v00000276aff55950_0;  1 drivers
+v00000276b00c6a50_0 .net/2u *"_ivl_0", 0 0, L_00000276aff9b848;  1 drivers
+v00000276b00cbd60_0 .net *"_ivl_2", 0 0, L_00000276b00c9db0;  1 drivers
+v00000276b00cbe00_0 .net "aluResult", 31 0, v00000276aff559f0_0;  1 drivers
+v00000276aff55810_0 .net "memoryData", 31 0, v00000276aff55a90_0;  1 drivers
+v00000276aff558b0_0 .net "writeData", 31 0, L_00000276aff53320;  alias, 1 drivers
+L_00000276aff53320 .functor MUXZ 32, v00000276aff55a90_0, v00000276aff559f0_0, L_00000276b00c9db0, C4<>;
+    .scope S_00000276b00c9a90;
+T_0 ;
+    %pushi/vec4 100, 0, 32;
+    %store/vec4 v00000276aff559f0_0, 0, 32;
+    %pushi/vec4 200, 0, 32;
+    %store/vec4 v00000276aff55a90_0, 0, 32;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000276aff55950_0, 0, 1;
+    %delay 1000, 0;
+    %vpi_call 2 32 "$display", "MemToReg=0 -> WriteData = %d", v00000276aff55b30_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000276aff55950_0, 0, 1;
+    %delay 1000, 0;
+    %vpi_call 2 41 "$display", "MemToReg=1 -> WriteData = %d", v00000276aff55b30_0 {0 0 0};
+    %vpi_call 2 45 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb\11_writeback_mux_tb.v";
+    "src\11_writeback_mux.v";
